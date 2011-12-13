@@ -23,6 +23,7 @@ namespace NotepadCS
 			Alignment = StringAlignment.Center,
 			LineAlignment = StringAlignment.Center
 		};
+		private Brush selectedBrush = new SolidBrush( Color.FromArgb( 128, 0, 0, 255 ) );
 		
 		private TextData textData = null;
 		public TextData TextData
@@ -62,15 +63,13 @@ namespace NotepadCS
 			var ox = 0.0f;
 			var oy = 0.0f;
 
-			Brush transparentBlueBrush = new SolidBrush( Color.FromArgb( 128, 0, 0, 255 ) );
-
 			foreach( var rowText in listText )
 			{
 				foreach( var character in rowText )
 				{
 					e.Graphics.DrawRectangle( pen, ox, oy, CellWidth, CellHeight );
 					e.Graphics.DrawString( character.ToString(), font, brush, ox + CellWidth/2 , oy + CellHeight/2, stringFormat );
-					e.Graphics.FillRectangle( transparentBlueBrush, ox, oy, CellWidth, CellHeight );
+					e.Graphics.FillRectangle( selectedBrush, ox, oy, CellWidth, CellHeight );
 					ox += CellWidth;
 				}
 
