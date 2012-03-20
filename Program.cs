@@ -20,15 +20,6 @@ namespace NotepadCS
 			//use args as filepaths
 
 			var mf = new MainForm();
-
-			var td = new TextData();
-			td.LoadFrom( "../../Program.cs", System.Text.Encoding.ASCII );
-
-			var tv0 = new TextView();
-			tv0.TextData = td;
-			tv0.Dock = DockStyle.Fill;
-			mf.Controls.Add( tv0 );
-			
 			Application.Run( mf );
 		}
 	}

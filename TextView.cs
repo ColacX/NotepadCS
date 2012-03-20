@@ -15,7 +15,7 @@ namespace NotepadCS
 		private List<string> viewedRows = null;
 		private int row;
 		private int column;
-		private Font font = new Font( FontFamily.GenericSansSerif, 10.0f );
+		private Font font = new Font( FontFamily.GenericSansSerif, 8.0f );
 		private Brush brush = Brushes.Black;
 		private Pen pen = Pens.Black;
 		private StringFormat stringFormat = new StringFormat()
@@ -43,8 +43,8 @@ namespace NotepadCS
 			}
 		}
 
-		public float CellWidth = 15;
-		public float CellHeight = 15;
+		public float CellWidth = 10;
+		public float CellHeight = 12;
 
 		public TextView()
 		{
@@ -60,20 +60,23 @@ namespace NotepadCS
 			e.Graphics.Clear( Color.White );
 			var listText = textData.ReadRange( 0, textData.Rows );
 
-			var ox = 0.0f;
-			var oy = 0.0f;
+			var oxs = 5.0f;
+			var oys = 5.0f;
+
+			var ox = oxs;
+			var oy = oys;
 
 			foreach( var rowText in listText )
 			{
 				foreach( var character in rowText )
 				{
-					e.Graphics.DrawRectangle( pen, ox, oy, CellWidth, CellHeight );
+					//e.Graphics.DrawRectangle( pen, ox, oy, CellWidth, CellHeight );
 					e.Graphics.DrawString( character.ToString(), font, brush, ox + CellWidth/2 , oy + CellHeight/2, stringFormat );
-					e.Graphics.FillRectangle( selectedBrush, ox, oy, CellWidth, CellHeight );
+					//e.Graphics.FillRectangle( selectedBrush, ox, oy, CellWidth, CellHeight );
 					ox += CellWidth;
 				}
 
-				ox = 0.0f;
+				ox = oxs;
 				oy += CellHeight;
 			}
 
